@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(method="post",action="/")
+    .form-group
+      label(for='Name') Name
+      input(type='text')#name.form-control
+    .form-group
+        label(for='Location') Location
+        input(type='text')#Location.form-control
+
+
+            //Hospital Name, Hospital Category, Address, Pincode, Phone Number,
+            //Emergency Number, Ambulance Phone Number, Toll Free Number
+            //Helpline, Email, Website, SPECIALITIES, FACILITIES, AVAILABLE BEDS.
