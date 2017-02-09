@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongojs = require('mongojs');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -15,7 +15,7 @@ var collections = ['Name','Address'];
 //Hospital Name, Hospital Category, Address, Pincode, Phone Number,
 //Emergency Number, Ambulance Phone Number, Toll Free Number
 //Helpline, Email, Website, SPECIALITIES, FACILITIES, AVAILABLE BEDS.
-var db = require("mongojs").connect(databaseUrl, collections);
+var db = mongojs(databaseUrl,collections);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
