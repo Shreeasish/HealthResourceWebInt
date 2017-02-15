@@ -8,11 +8,11 @@ var mongojs = require('mongojs');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var data = require('./routes/data');
-
+var register = require('./routes/register');
 var app = express();
 
 var databaseUrl = 'HealthResourceDB';
-var collections = ['Name','Address'];
+var collections = ['Name','Location'];
 //Hospital Name, Hospital Category, Address, Pincode, Phone Number,
 //Emergency Number, Ambulance Phone Number, Toll Free Number
 //Helpline, Email, Website, SPECIALITIES, FACILITIES, AVAILABLE BEDS.
@@ -29,10 +29,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/data',data);
+app.use('/register',register);
+// app.post('/register-submit',function (req,res) {
+//   var name = req.body.name;
+//   var location = req.body.location;
+//   console.log(req.body);
+//   res.redirect('/')
+// })
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
