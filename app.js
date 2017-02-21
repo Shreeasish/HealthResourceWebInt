@@ -12,12 +12,11 @@ var register = require('./routes/register');
 var app = express();
 
 var databaseUrl = 'HealthResourceDB';
-var collections = ['Name','Location'];
+var collections = ['Resources'];
 //Hospital Name, Hospital Category, Address, Pincode, Phone Number,
 //Emergency Number, Ambulance Phone Number, Toll Free Number
 //Helpline, Email, Website, SPECIALITIES, FACILITIES, AVAILABLE BEDS.
 var db = mongojs(databaseUrl,collections);
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -33,12 +32,16 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/data',data);
 app.use('/register',register);
-// app.post('/register-submit',function (req,res) {
-//   var name = req.body.name;
-//   var location = req.body.location;
-//   console.log(req.body);
-//   res.redirect('/')
-// })
+
+app.post('/register',function (req,res) {
+    body_name = req.body.name;
+    body_location = req.body.location;
+    record = {name: body_name, location: body_location};
+    db.Resources.save(record, function (err, records) {
+        console.log("something jiggles");
+    });
+  res.redirect('/');
+});
 
 
 // catch 404 and forward to error handler
@@ -58,6 +61,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 module.exports = app;

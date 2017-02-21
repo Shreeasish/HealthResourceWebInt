@@ -1,18 +1,52 @@
 extends layout
 
+
 block content
     h1= title
     p Welcome to #{title}
+        div.col-md-12
+            form(method="post",action="/register")
+                .form-group
+                    h4 Name
+                    input(type='text' name='name')#name.form-control
+                .form-group
+                    h4 Category
+                    div
+                    div.radio
+                        label
+                            input(type="radio" name="hospital" value="hospital")#Hospital
+                            | Hospital
+                    div.radio
+                        label
+                            input(type="radio" name="hospital" value="doctor")#Doctor
+                            | Doctor
+                div.col-md-6
+                    .form-group
+                        h4 Location
+                        input(type='text' name='location')#location.form-control
+                    .form-group
+                        button(type='submit').btn.btn-primary Submit
 
-        form(method="post",action="/register")
-            .form-group
-                label(for='Name') Name
-                input(type='text' name='name')#name.form-control
-            .form-group
-                label(for='location') Location
-                input(type='text' name='location')#location.form-control
-            .form-group
-                button(type='submit').btn.btn-primary Submit
+                div.col-md-6
+                    .form-group
+                        .form-group
+                            h4 Address Line 1
+                            input(type='text' name='addressLine1')#addressLine1.form-control
+                        .form-group
+                            h4 Address Line 2
+                            input(type='text' name='addressLine2')#addressLine2.form-control
+                        .form-group
+                            h4 City/District
+                            input(type='text' name='city')#city.form-control
+                        .form-group
+                            h4 State
+                            input(type='text' name='state')#state.form-control
+                        .form-group
+                            h4 Postal Code
+                            input(type='number' name='postalCode')#postalCode.form-control
+                        button(type='button' data-loading-text='Resolving...')#resolveButton.btn.btn-default
+
         //Hospital Name, Hospital Category, Address, Pincode, Phone Number,
         //Emergency Number, Ambulance Phone Number, Toll Free Number
         //Helpline, Email, Website, SPECIALITIES, FACILITIES, AVAILABLE BEDS.
+    script(type="text/javascript"
