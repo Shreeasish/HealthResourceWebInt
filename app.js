@@ -36,10 +36,12 @@ app.use('/register',register);
 app.post('/register',function (req,res) {
     body_name = req.body.name;
     body_location = req.body.location;
+    console.log(req.body);
+
     record = {name: body_name, location: body_location};
-    db.Resources.save(record, function (err, records) {
-        console.log("something jiggles");
-    });
+    // db.Resources.save(record, function (err, records) {
+    //     console.log("something jiggles");
+    // });
   res.redirect('/');
 });
 
