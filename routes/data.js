@@ -11,7 +11,6 @@ var collections = ['Resources'];
 //Helpline, Email, Website, SPECIALITIES, FACILITIES, AVAILABLE BEDS.
 var db = mongojs(databaseUrl,collections);
 
-
 router.get('/getAllResources', function(req, res, next) {
 
     db.Resources.find(function (err,docs) {

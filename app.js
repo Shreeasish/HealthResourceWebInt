@@ -8,6 +8,7 @@ var mongojs = require('mongojs');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var data = require('./routes/data');
+var test = require('./routes/test');
 var register = require('./routes/register');
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/data',data);
 app.use('/register',register);
+app.use('/test',test);
 
 app.post('/register',function (req,res) {
     body_name = req.body.name;
